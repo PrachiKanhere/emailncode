@@ -21,7 +21,7 @@ jobs:
     runs-on: windows-latest
     needs: job1
     steps:
-        str = ${{needs.job1.outputs.output1}}
+      - name: check it
         uses: actions/setup-python@*
         run: python timstamp.py
           
