@@ -9,10 +9,19 @@ jobs:
       output1: abc.txt
     steps:
       - id: step1
-        run: echo hello > abc.txt
+        run: echo "Following Buses might be down:[SIBus,JMSBus]" > abc.txt
 
   job2:
     runs-on: ubuntu-latest
     needs: job1
     steps:
       - run: echo ${{needs.job1.outputs.output1}}
+ 
+  Groovy-Script:
+    runs-on: windows-latest
+    needs: job1
+    steps:
+        str = ${{needs.job1.outputs.output1}}
+      - name: create env var store values and use them while sending mail to NOI team check how to add email action here and failure cases also.
+        uses: actions/setup-python@*
+        run: python timstamp.py
