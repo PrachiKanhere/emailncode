@@ -21,8 +21,10 @@ jobs:
     runs-on: windows-latest
     needs: job1
     steps:
-      - name: check it
+      - name: setup Python
         uses: actions/setup-python@*
+        
+      - name: run py script
         run: python timstamp.py
           
         
