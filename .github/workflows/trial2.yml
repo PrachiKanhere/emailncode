@@ -22,6 +22,7 @@ jobs:
     needs: job1
     steps:
         str = ${{needs.job1.outputs.output1}}
-      - name: create env var store values and use them while sending mail to NOI team check how to add email action here and failure cases also.
-        uses: actions/setup-python@*
+      - uses: actions/setup-python@*
         run: python timstamp.py
+          
+        
