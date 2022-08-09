@@ -31,5 +31,6 @@ jobs:
 
   newtwo:
     runs-on: ubuntu-latest
+    steps:
       - name: Run a multi-line script
         run: cat abc.txt
