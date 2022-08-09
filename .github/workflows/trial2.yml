@@ -22,7 +22,7 @@ jobs:
     needs: job1
     steps:
       - name: setup Python
-        uses: actions/setup-python@*
+        uses: actions/setup-python@v3
         
       - name: run py script
         run: python timstamp.py
