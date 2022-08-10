@@ -12,7 +12,7 @@ jobs:
         run: echo "Following Buses might be down:[SIBus,JMSBus]" > abc.txt
  
   Groovy-Script:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: job1
     steps:
       - name: setup Python
