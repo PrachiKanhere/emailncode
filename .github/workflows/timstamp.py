@@ -4,7 +4,7 @@ from pytz import timezone
 import re
 
 
-str = open("abc1.txt","r")
+str = abc1
 eastern = timezone('US/Eastern')
 Day_of_week = datetime.date.today().strftime("%A")
 Month_of_year=datetime.date.today().strftime("%B")
