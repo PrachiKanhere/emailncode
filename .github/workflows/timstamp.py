@@ -18,7 +18,7 @@ print(TIMESTAMP)
 formattedDate = datetime.date.today().strftime("%d-%b-%Y")
 print(formattedDate)
 
-match = re.search(r'Following Buses might be down:*', str)
+match = re.search(r'Following Buses might be down:\\[]', str)
   if match:
     downBus= match.group(1)
     print(downBus)    
