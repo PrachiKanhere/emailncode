@@ -4,7 +4,9 @@ from pytz import timezone
 import re
 
 
-str = abc1
+text_file = open("abc1.txt", "r")
+str = text_file.read()
+
 eastern = timezone('US/Eastern')
 Day_of_week = datetime.date.today().strftime("%A")
 Month_of_year=datetime.date.today().strftime("%B")
@@ -29,4 +31,4 @@ if match:
            print('Down Bus not defined')
 else:
     print('Message Engines up and running')
-
+text_file.close()
