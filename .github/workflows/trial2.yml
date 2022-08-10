@@ -9,7 +9,7 @@ jobs:
       output1: abc.txt
     steps:
       - id: step1
-        run: echo "Following Buses might be down:' '[intjmsbus]" > abc.txt
+        run: echo "Following Buses might be down://[intjmsbus]"
  
   Groovy-Script:
     runs-on: ubuntu-latest
