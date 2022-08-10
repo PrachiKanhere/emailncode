@@ -6,7 +6,7 @@ import re
 
 text_file = open("abc1.txt", "r")
 str = text_file.read()
-
+print(str)
 eastern = timezone('US/Eastern')
 Day_of_week = datetime.date.today().strftime("%A")
 Month_of_year=datetime.date.today().strftime("%B")
