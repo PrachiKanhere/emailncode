@@ -22,6 +22,6 @@ jobs:
         uses: actions/setup-python@v3
         
       - name: run py script
-        run: python timstamp.py
+        run: python .github/workflows/timstamp.py
           
         
