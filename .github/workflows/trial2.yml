@@ -6,13 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     # Map a step output to a job output
     outputs:
-      output1: ${{ steps.step1.outputs.output}}
+      output1: ${{ steps.step1.outputs.test}}
     steps:
       - name: checkout
         uses: actions/checkout@v2.4.2
         
       - id: step1
-        run: echo "Following Buses might be down://[intjmsbus]"
+        run: echo "::set-output name=test::Following Buses might be down:" "[intjmsbus]"
  
   Groovy-Script:
     runs-on: ubuntu-latest
