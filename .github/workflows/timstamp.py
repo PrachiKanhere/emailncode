@@ -3,7 +3,8 @@ import datetime
 from pytz import timezone
 import re
 
-str = ${{needs.job1.outputs.output1}}
+
+str = open("abc1.txt","r")
 eastern = timezone('US/Eastern')
 Day_of_week = datetime.date.today().strftime("%A")
 Month_of_year=datetime.date.today().strftime("%B")
