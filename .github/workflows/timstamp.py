@@ -34,5 +34,5 @@ else:
 text_file.close()
 
 file = open("op.txt", "w")
-file.write("formattedDate = " + formattedDate + "\n" +"DOWN_BUS = "+DOWN_BUS + "\n"+"TIMESTAMP = "+TIMESTAMP )
+file.write("formattedDate = " +formattedDate + "\n" +"DOWN_BUS = "+DOWN_BUS + "\n"+"TIMESTAMP = "+TIMESTAMP )
 file.close
