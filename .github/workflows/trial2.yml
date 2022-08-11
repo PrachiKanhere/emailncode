@@ -34,6 +34,6 @@ jobs:
         
       - name: run py script
         run: python .github/workflows/timstamp.py
-        run: echo "hi"
-          
+        
+        
     
