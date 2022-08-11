@@ -34,10 +34,6 @@ jobs:
         
       - name: run py script
         run: python .github/workflows/timstamp.py
+        run: echo "hi"
           
-      - name: echo vars
-        run: |
-          echo "${{DOWN_BUS}}"
-          echo "${{formattedDate}}"
-          echo "${{TIMESTAMP}}"
-        
+    
