@@ -35,5 +35,7 @@ jobs:
       - name: run py script
         run: python .github/workflows/timstamp.py
         
-        
+      - name: oread para
+        run: cat op.txt
+      
     
