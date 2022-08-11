@@ -37,7 +37,7 @@ jobs:
           
       - name: echo vars
         run: |
-          echo ${{DOWN_BUS}}
-          echo ${{formattedDate}}
-          echo ${{TIMESTAMP}}
+          echo "${{DOWN_BUS}}"
+          echo "${{formattedDate}}"
+          echo "${{TIMESTAMP}}"
         
