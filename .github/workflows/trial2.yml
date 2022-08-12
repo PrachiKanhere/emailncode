@@ -33,6 +33,27 @@ jobs:
         run : python -m pip install pytz
         
       - name: run py script
-        run: python .github/workflows/timstamp.py
+        run: |
+          output=$(python .github/workflows/Timestamp.py)
+          echo "::set-output name=TIMESTAMP::$output"
+        id: step1
+           
+      - name: run py script
+        run: |
+          output=$(python .github/workflows/date.py)
+          echo "::set-output name=formatteddate::$output"
+        id: step2
+        
+      - name: run py script
+        run: |
+          output=$(python .github/workflows/down_bus_check.py)
+          echo "::set-output name=DOWN_BUS::$output"
+        id: step3
+          
+      - name: Print op
+        run: |
+          echo "${{ steps.step1.outputs.TIMESTAMP }}"
+          echo "${{ steps.step2.outputs.formatteddate }}"
+          echo "${{ steps.step3.outputs.DOWN_BUS }}"
 
     
