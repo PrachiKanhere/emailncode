@@ -11,9 +11,12 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2.4.2
         
-      - id: step1
-        run: echo  "::set-output name=test::Following Buses might be down:""[intjmsbus,jmsbus, ysbus]"
-      
+      - name: inputfile  
+        id: step1
+        run: |
+          $abc = "Following Buses might be down:' '[intjmsbus,jmsbus, ysbus]"
+          echo "::set-output name=test::$abc"
+          shell: bash
      
   Groovy-Script:
     runs-on: windows-latest
