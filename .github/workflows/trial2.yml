@@ -3,7 +3,7 @@ on: push
 
 jobs:
   job1:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     # Map a step output to a job output
     outputs:
       output1: ${{ steps.step1.outputs.test}}
@@ -15,7 +15,7 @@ jobs:
         run: echo "::set-output name=test::Following Buses might be down:" "[intjmsbus,jmsbus, ysbus]"
  
   Groovy-Script:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: job1
     steps:
       - name: checkout
