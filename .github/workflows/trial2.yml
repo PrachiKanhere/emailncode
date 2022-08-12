@@ -50,14 +50,18 @@ jobs:
         run: |
           python .github/workflows/down_bus_check.py > output
           echo "::set-output name=DOWN_BUS::$output"
+          echo "$output"
+          echo "output"
+          echo %output%
+          echo "%output%"
         id: step3
         
           
       - name: Print op
         run: |
-          echo  ${{steps.step1.outputs.TIMESTAMP}}
-          echo  ${{steps.step2.outputs.formatteddate}}
-          echo  ${{steps.step3.outputs.DOWN_BUS}}
+          echo "${{steps.step1.outputs.TIMESTAMP}}"
+          echo "${{steps.step2.outputs.formatteddate}}"
+          echo "${{steps.step3.outputs.DOWN_BUS}}"
   
 
     
