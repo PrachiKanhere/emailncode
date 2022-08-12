@@ -12,7 +12,6 @@ jobs:
         uses: actions/checkout@v2.4.2
         
       - id: step1
-        shell: bash
         run: echo "::set-output name=test::Following Buses might be down:' '[intjmsbus,jmsbus, ysbus]"
      
   Groovy-Script:
@@ -35,20 +34,20 @@ jobs:
         
       - name: run py script
         run: |
-          python .github/workflows/Timestamp.py > output
-          echo "::set-output name=TIMESTAMP::%output%"
+          output = %(python .github/workflows/Timestamp.py)%
+          echo "::set-output name=TIMESTAMP::output"
         id: step1
            
       - name: run py script
         run: |
-          python .github/workflows/date.py > output
-          echo "::set-output name=formatteddate::%output%"
+          output = %(python .github/workflows/date.py)%
+          echo "::set-output name=formatteddate::output"
         id: step2
         
       - name: run py script
         run: |
-          python .github/workflows/down_bus_check.py > output
-          echo "::set-output name=DOWN_BUS::%output%"
+          output = %(python .github/workflows/down_bus_check.py)%
+          echo "::set-output name=DOWN_BUS::output"
         id: step3
           
       - name: Print op
