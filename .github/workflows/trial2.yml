@@ -15,7 +15,7 @@ jobs:
         run: echo "::set-output name=test::Following Buses might be down:" "[intjmsbus,jmsbus, ysbus]"
  
   Groovy-Script:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: job1
     steps:
       - name: checkout
