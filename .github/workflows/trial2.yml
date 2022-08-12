@@ -16,7 +16,7 @@ jobs:
         run: |
           $abc = "Following Buses might be down:' '[intjmsbus,jmsbus, ysbus]"
           echo "::set-output name=test::$abc"
-          shell: bash
+          
      
   Groovy-Script:
     runs-on: windows-latest
