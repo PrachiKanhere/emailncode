@@ -8,7 +8,6 @@ str = text_file.read()
 match = re.search(r"Following Buses might be down: \[.*\]", str)
 if match:
        downBus= match.group()
-       print(downBus)
        DOWN_BUS = downBus.split(": ")[1]
        print(DOWN_BUS)
        if len(DOWN_BUS)== 0:
