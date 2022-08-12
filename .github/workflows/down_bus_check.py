@@ -3,9 +3,9 @@ import re
 
 text_file = open("abc1.txt", "r")
 str = text_file.read()
-print(str)
 
-match = re.search(r"Following Buses might be down: \[.*\]", str)
+
+match = re.search(r"Following Buses might be down:\[.*\]", str)
 if match:
        downBus= match.group()
        DOWN_BUS = downBus.split(": ")[1]
