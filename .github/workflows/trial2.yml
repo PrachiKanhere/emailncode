@@ -37,7 +37,7 @@ jobs:
           $output = python .github/workflows/Timestamp.py
           echo "::set-output name=TIMESTAMP::$output"
         id: step1
-        shell: bash
+        
            
       - name: run py script
         run: |
