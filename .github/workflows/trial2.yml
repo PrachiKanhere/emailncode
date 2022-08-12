@@ -41,22 +41,22 @@ jobs:
            
       - name: run py script
         run: |
-          output = $(python .github/workflows/date.py)
+          $output = python .github/workflows/date.py
           echo "::set-output name=formatteddate::$output"
         id: step2
-        shell: bash
+      
         
         
       - name: run py script
         run: |
-          output = $(python .github/workflows/down_bus_check.py)
+          $output = python .github/workflows/down_bus_check.py
           echo "::set-output name=DOWN_BUS::$output"
           echo "$output"
           echo "output"
           echo %output%
           echo "%output%"
         id: step3
-        shell: bash
+      
           
       - name: Print op
         run: |
