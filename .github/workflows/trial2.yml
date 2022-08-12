@@ -55,9 +55,9 @@ jobs:
           
       - name: Print op
         run: |
-          echo "%{{ steps.step1.outputs.TIMESTAMP }}%"
-          echo "%{{ steps.step2.outputs.formatteddate }}%"
-          echo "%{{ steps.step3.outputs.DOWN_BUS }}%"
+          echo  %steps.step1.outputs.TIMESTAMP%
+          echo  %steps.step2.outputs.formatteddate%
+          echo  %steps.step3.outputs.DOWN_BUS%
   
 
     
