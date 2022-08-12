@@ -35,29 +35,29 @@ jobs:
       - name: run py script
         run: |
           python .github/workflows/Timestamp.py > output
-          echo "::set-output name=TIMESTAMP::%output%"
+          echo "::set-output name=TIMESTAMP::$output"
         id: step1
         
            
       - name: run py script
         run: |
           python .github/workflows/date.py > output
-          echo "::set-output name=formatteddate::%output%"
+          echo "::set-output name=formatteddate::$output"
         id: step2
         
         
       - name: run py script
         run: |
           python .github/workflows/down_bus_check.py > output
-          echo "::set-output name=DOWN_BUS::%output%"
+          echo "::set-output name=DOWN_BUS::$output"
         id: step3
         
           
       - name: Print op
         run: |
-          echo  %steps.step1.outputs.TIMESTAMP%
-          echo  %steps.step2.outputs.formatteddate%
-          echo  %steps.step3.outputs.DOWN_BUS%
+          echo  ${{steps.step1.outputs.TIMESTAMP}}
+          echo  ${{steps.step2.outputs.formatteddate}}
+          echo  ${{steps.step3.outputs.DOWN_BUS}}
   
 
     
