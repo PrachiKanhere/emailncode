@@ -75,6 +75,7 @@ jobs:
           echo "${{steps.step3.outputs.DOWN_BUS}}"
           
       - name: get hour
+        id: step4
         run: |
           import datetime
           from pytz import timezone
@@ -86,7 +87,7 @@ jobs:
           echo "::set-output name=Hour::$hour"
         shell: python
           
-      - if: ${{Hour}} < 9 & ${{Hour}} >=1  && ${{needs.job1.outputs.output2}} == "SUCCESS"
+      - if: ${{steps.step4.outputs.Hour}} < 9 & ${{steps.step4.outputs.Hour}} >=1  && ${{needs.job1.outputs.output2}} == "SUCCESS"
        #   && log string ==it has exceeded threshold limit for msg plz take action (check on if case)
         name: it has exceeded threshold limit for msg plz take action send mail
         run: echo "sending mail"
