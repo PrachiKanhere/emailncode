@@ -7,7 +7,17 @@ jobs:
     # Map a step output to a job output
     outputs:
       output1: ${{ steps.step1.outputs.test}}
+      output2: ${{ steps.step2.outputs.test}}
     steps:
+      - name: checkout
+        uses: actions/checkout@v2.4.2
+        
+      - name: taking build result
+        id: step2
+        run: |
+          $build_result = "SUCCESS"
+          echo "::set-output name=test::$build_result"
+          
       - name: checkout
         uses: actions/checkout@v2.4.2
         
@@ -76,9 +86,9 @@ jobs:
           print(hour)
         shell: python
           
-      #- if: if hour < 9 & hour >=1  && build result == success|fixed|unstable 
+      - if: if hour < 21 & hour >=1  && ${{needs.job1.outputs.output2}} == SUCCESS 
        #   && log string ==it has exceeded threshold limit for msg plz take action (check on if case)
-       # name: it has exceeded threshold limit for msg plz take action send mail
-       # run: echo "sending mail"
+        name: it has exceeded threshold limit for msg plz take action send mail
+        run: echo "sending mail"
         
   
