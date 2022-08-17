@@ -84,7 +84,7 @@ jobs:
           eastern = timezone('US/Eastern')
           now = datetime.datetime.now()
           hour= now.astimezone(timezone('US/Eastern')).strftime("%H")
-          echo "::set-output name=Hour::$hour"
+          ::set-output name=Hour::$hour
         shell: python
           
       - if: ${{steps.step4.outputs.Hour}} < 9 & ${{steps.step4.outputs.Hour}} >=1  && ${{needs.job1.outputs.output2}} == "SUCCESS"
