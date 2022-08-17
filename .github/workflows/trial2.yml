@@ -66,12 +66,10 @@ jobs:
           echo "${{steps.step1.outputs.TIMESTAMP}}"
           echo "${{steps.step2.outputs.formatteddate}}"
           echo "${{steps.step3.outputs.DOWN_BUS}}"
-        
-
-  email:
-    runs-on: windows-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v2.4.2
+          
+      - if: if hour < 9 & hour >=1  && build result == success|fixed|unstable 
+          && log string ==it has exceeded threshold limit for msg plz take action (check on if case)
+        name: it has exceeded threshold limit for msg plz take action send mail
+        run: echo "sending mail"
         
   
