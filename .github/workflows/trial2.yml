@@ -75,17 +75,10 @@ jobs:
           echo "${{steps.step3.outputs.DOWN_BUS}}"
           
       - name: get hour
-        id: step4
         run: |
-          import datetime
-          from pytz import timezone
-
-
-          eastern = timezone('US/Eastern')
-          now = datetime.datetime.now()
-          hour= now.astimezone(timezone('US/Eastern')).strftime("%H")
-          ::set-output name=Hour::$hour
-        shell: python
+          $hour = python .github/workflows/hour.py
+          echo "::set-output name=Hour::$hour"
+        id: step4
           
       - if: ${{steps.step4.outputs.Hour}} < 9 & ${{steps.step4.outputs.Hour}} >=1  && ${{needs.job1.outputs.output2}} == "SUCCESS"
        #   && log string ==it has exceeded threshold limit for msg plz take action (check on if case)
