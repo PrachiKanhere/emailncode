@@ -86,7 +86,7 @@ jobs:
           print(hour)
         shell: python
           
-      - if: if hour < 21 & hour >=1  && ${{needs.job1.outputs.output2}} == SUCCESS 
+      - if: if hour < 9 & hour >=1  && ${{needs.job1.outputs.output2}} == SUCCESS 
        #   && log string ==it has exceeded threshold limit for msg plz take action (check on if case)
         name: it has exceeded threshold limit for msg plz take action send mail
         run: echo "sending mail"
