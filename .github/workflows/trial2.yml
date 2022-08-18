@@ -85,11 +85,9 @@ jobs:
           echo "${{steps.step4.outputs.Hour}}"
           
       - name: it has exceeded threshold limit for msg plz take action send mail 
-        run: |
-           if ("${{needs.job1.outputs.output2}}" == "SUCCESS")
-           {
-             echo "sending mail"
-           }
+        if: ${{needs.job1.outputs.output2  == 'SUCCESS' }}
+        run: echo "sending mail"
+
    
         
         # && log string ==it has exceeded threshold limit for msg plz take action (check on if case)
