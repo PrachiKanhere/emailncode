@@ -84,10 +84,20 @@ jobs:
         run: |
           echo "${{steps.step4.outputs.Hour}}"
           
-      - name: it has exceeded threshold limit for msg plz take action send mail 
+      - name: it has exceeded threshold limit for msg plz take action send mail
+        run: |
+          $fail2 = python .github/workflows/fail2.py
+          echo "::set-output name=Fail2::$fail2"
+        id: step5
         if: ${{(steps.step4.outputs.Hour < '21') && (steps.step4.outputs.Hour >= '1') && ((needs.job1.outputs.output2 =='SUCCESS') ||
-            (needs.job1.outputs.output2 =='FIXED') || (needs.job1.outputs.output2 =='UNSTABLE')) }}
-        run: echo "sending mail"
+            (needs.job1.outputs.output2 =='FIXED') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
+            (steps.step5.outputs.Fail2 == True) }}
+      - run: echo "send mail"
+      
+      
+          
+          
+
 
        
         # && log string ==it has exceeded threshold limit for msg plz take action (check on if case)
