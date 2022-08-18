@@ -86,7 +86,7 @@ jobs:
           
       - name: it has exceeded threshold limit for msg plz take action send mail 
         if: |
-          ${{steps.step4.outputs.Hour < '03' && steps.step4.outputs.Hour >= '01' }}
+          ${{(steps.step4.outputs.Hour < '03') && (steps.step4.outputs.Hour >= '01' )}}
         run: echo "sending mail"
 
        
