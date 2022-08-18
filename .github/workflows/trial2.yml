@@ -86,7 +86,7 @@ jobs:
           
       - name: it has exceeded threshold limit for msg plz take action send mail 
         run: |
-           if (${{needs.job1.outputs.output2}} == "SUCCESS")
+           if ("${{needs.job1.outputs.output2}}" == "SUCCESS")
            {
              echo "sending mail"
            }
