@@ -92,7 +92,7 @@ jobs:
       
         if: ${{(steps.step4.outputs.Hour < '21') && (steps.step4.outputs.Hour >= '1') && ((needs.job1.outputs.output2 =='SUCCESS') ||
              (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-             (python .github/workflows/fail2.py) }}
+             ($fail2 == 'True') }}
       - run: echo "send mail"
       
       
