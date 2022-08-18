@@ -92,7 +92,7 @@ jobs:
         id: step5
         if: ${{(steps.step4.outputs.Hour < '21') && (steps.step4.outputs.Hour >= '1') && ((needs.job1.outputs.output2 =='SUCCESS') ||
             (needs.job1.outputs.output2 =='FIXED') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-            (steps.step5.outputs.Fail2 == True) }}
+            (steps.step5.outputs.Fail2 == 'True') }}
       - run: echo "send mail"
       
       
