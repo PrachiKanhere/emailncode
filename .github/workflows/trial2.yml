@@ -15,7 +15,7 @@ jobs:
       - name: taking build result
         id: step2
         run: |
-          $build_result = "SUCCESS"
+          $build_result = "FAILURE"
           echo "::set-output name=test::$build_result"
           
       - name: checkout
@@ -85,8 +85,9 @@ jobs:
           echo "${{steps.step4.outputs.Hour}}"
           
       - name: it has exceeded threshold limit for msg plz take action send mail 
-        if: ((${{steps.step4.outputs.Hour}} < '3') && ( ${{steps.step4.outputs.Hour}} >= '1' ) && ( ${{needs.job1.outputs.output2}} == "SUCCESS"))
+        if: ( ${{needs.job1.outputs.output2}} == "SUCCESS")
             # && log string ==it has exceeded threshold limit for msg plz take action (check on if case)
+            # ((${{steps.step4.outputs.Hour}} < '3') && ( ${{steps.step4.outputs.Hour}} >= '1' ) && 
         run: echo "sending mail"
         
   
