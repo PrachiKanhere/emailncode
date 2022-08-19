@@ -24,8 +24,8 @@ jobs:
       - name: inputfile  
         id: step1
         run: |
-          #$abc = "Following Buses might be down:' '[intjmsbus,jmsbus, ysbus]"
-          $abc= "has exceeded threshold limit for messages. Please take action!"
+          $abc = "Following Buses might be down:' '[intjmsbus,jmsbus, ysbus]"
+          #$abc= "has exceeded threshold limit for messages. Please take action!"
           echo "::set-output name=test::$abc"
           
      
