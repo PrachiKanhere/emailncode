@@ -98,8 +98,7 @@ jobs:
         
       - name: mail case
         if: ${{(steps.step4.outputs.Hour < '21') && (steps.step4.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
-             (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-             (steps.step5.outputs.Fail2 == 'Match')}}
+             (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE'))}}
         run: |
           echo "send mail"
       
