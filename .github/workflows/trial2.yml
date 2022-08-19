@@ -77,8 +77,8 @@ jobs:
           
       - name: get hour
         run: |
-          $hour = python .github/workflows/hour.py
-          echo "::set-output name=Hour::$hour"
+          $output = python .github/workflows/hour.py
+          echo "::set-output name=Hour::$output"
         id: step4
           
       - name: Print op
@@ -87,8 +87,8 @@ jobs:
           
       - name: it has exceeded threshold limit for msg plz take action send mail
         run: |
-          $fail2 = python .github/workflows/fail2.py
-          echo "::set-output name=Fail2::$fail2"
+          $output = python .github/workflows/fail2.py
+          echo "::set-output name=Fail2::$output"
         id: step5
         
       - name: Print op
