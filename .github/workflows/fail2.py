@@ -1,7 +1,7 @@
 import re
 
 
-text_file = open("abc1.txt", "w")
+text_file = open("abc1.txt", "r+")
 str = text_file.read()
 print(str)
 
