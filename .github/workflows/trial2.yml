@@ -38,8 +38,8 @@ jobs:
      
       - name : take file
         run: | 
-          echo ${{needs.job1.outputs.output1}}
-          echo ${{needs.job1.outputs.output1}} > abc1.txt
+          echo "${{needs.job1.outputs.output1}}"
+          echo "${{needs.job1.outputs.output1}}" > abc1.txt
            
       - name: setup Python
         uses: actions/setup-python@v3
