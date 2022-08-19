@@ -3,12 +3,13 @@ import re
 
 text_file = open("abc1.txt", "r+")
 str = text_file.read()
-print(str)
+#print(str)
 
 match = re.search(r"Following Buses might be down: \[.*\]", str)
 if match:
-       print('hitting')
-       downBus= match.group()
+       
+       #print('hitting')
+       downBus= match.group(0)
        #print(downBus)
        DOWN_BUS = downBus.split(": ")[1]
        print(DOWN_BUS)
