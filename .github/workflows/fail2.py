@@ -3,8 +3,10 @@ import re
 
 text_file = open("abc1.txt", "r")
 print(text_file.read())
+pattern = re.compile('has exceeded threshold limit for messages. Please take action!')
 
-if re.search(r".*", text_file.read()):
+match = pattern.search(text_file.read())
+if match:
        print('Match')
 
        
