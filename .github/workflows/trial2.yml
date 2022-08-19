@@ -92,8 +92,9 @@ jobs:
         #id: step5
         
         run: |
-          $str = ${{needs.job1.outputs.output1}}
           import re
+          str = ${{needs.job1.outputs.output1}}
+          
 
           match = re.search(r"has exceeded threshold limit for messages. Please take action!", str)
           if match:
