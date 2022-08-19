@@ -86,32 +86,22 @@ jobs:
           echo "${{steps.step4.outputs.Hour}}"
           
       - name: it has exceeded threshold limit for msg plz take action send mail
-        #run: |
-         # $output = python .github/workflows/fail2.py
-         # echo "::set-output name=Fail2::$output"
-        #id: step5
-        
         run: |
-          import re
-          str = ${{needs.job1.outputs.output1}}
-          
-
-          match = re.search(r"has exceeded threshold limit for messages. Please take action!", str)
-          if match:
-            print("hitting case")
-            print('match')
-            
+          $output = python .github/workflows/fail2.py
+          echo "::set-output name=Fail2::$output"
         id: step5
    
         
-       # - name: Print op
-        #run: |
-        #  echo "${{steps.step5.outputs.Fail2}}"
+      - name: Print op
+        run: |
+          echo "${{steps.step5.outputs.Fail2}}"
         
-      - if: ${{(steps.step4.outputs.Hour < '21') && (steps.step4.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
+      - name: mail case
+        if: ${{(steps.step4.outputs.Hour < '21') && (steps.step4.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
              (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-             (steps.step5.outputs.Fail2 == 'match')}}
-        run: echo "send mail"
+             (steps.step5.outputs.Fail2 == 'Match')}}
+        run: |
+          echo "send mail"
       
       
           
