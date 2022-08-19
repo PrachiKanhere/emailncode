@@ -2,11 +2,9 @@ import re
 
 
 text_file = open("abc1.txt", "r")
-print(text_file.read())
-pattern = re.compile(r'has exceeded threshold limit for messages. Please take action!')
+str = text_file.read()
 
-match = pattern.search(text_file.read())
-if match.group(0):
+if re.search(r'has exceeded threshold limit for messages. Please take action!',str):
        print('Match')
 
        
