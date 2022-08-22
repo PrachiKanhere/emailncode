@@ -133,10 +133,17 @@ jobs:
       run: |
         echo "${{steps.step3.outputs.Fail2}}"
         
-    - name: mail case1
+    - name: Sucess case send emails case1
       if: ${{needs.job1.outputs.output2 =='SUCCESS'}}
-      run: |
-        echo "send mail success case1"
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        subject: Github Actions job result
+        to: nileshkr1112@gmail.com,kanhereprachi9@gmail.com
+        body: Build job of completed successfully!
+        html_body: <h2><b>IBM Queue depth MOnitoring GITHUB_RUN_NUMBER</b></h2>
+        #attachments:
         
     - name: mail case2
       if: ${{ needs.job1.outputs.output2 =='FAILURE'}}
