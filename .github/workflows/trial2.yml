@@ -124,67 +124,57 @@ jobs:
         echo "${{steps.step2.outputs.Fail2}}"
         
     - name: mail case1
-      if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
-           (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-           (steps.step2.outputs.Fail2 == 'Match')}}
+      if: ${{needs.job1.outputs.output2 =='SUCCESS'}}
       run: |
-        echo "send mail"
+        echo "send mail success case1"
         
     - name: mail case2
-      if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
-           (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-           (steps.step2.outputs.Fail2 == 'Match')}}
+      if: ${{ needs.job1.outputs.output2 =='FAILURE'}}
       run: |
-        echo "send mail"
+        echo "send mail failure case2"
       
     - name: mail case3
       if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
-           (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
+           (needs.job1.outputs.output2 =='FIXED') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
            (steps.step2.outputs.Fail2 == 'Match')}}
       run: |
-        echo "send mail"
+        echo "send mail case3"
           
-    - name: mail case4
+    - name: mail case4 GET MINUTE HERE
       if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
-           (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
+           (needs.job1.outputs.output2 =='FIXED') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
            (steps.step2.outputs.Fail2 == 'Match')}}
       run: |
-        echo "send mail"
+        echo "send mail case4"
 
     - name: mail case5
-      if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
-           (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-           (steps.step2.outputs.Fail2 == 'Match')}}
+      if: ${{(needs.job1.outputs.output2 =='FAILURE') && (steps.step2.outputs.Fail2 == 'Match')}}
       run: |
-        echo "send mail"
+        echo "send mail WAS case5"
        
     - name: mail case6
-      if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
-           (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
+      if: ${{(needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
            (steps.step2.outputs.Fail2 == 'Match')}}
       run: |
-        echo "send mail"
+        echo "send mail retrial case6"
         
     - name: mail case7
       if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
-           (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
+           (needs.job1.outputs.output2 =='FIXED') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
            (steps.step2.outputs.Fail2 == 'Match')}}
       run: |
-        echo "send mail"
-    
+        echo "send mail Queues are not reducing case7"
+        
     - name: mail case8
-      if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
-           (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
+      if: ${{(needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
            (steps.step2.outputs.Fail2 == 'Match')}}
       run: |
-        echo "send mail"
+        echo "send mail Following Buses might be down case8"
         
     - name: mail case9
-      if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
-           (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-           (steps.step2.outputs.Fail2 == 'Match')}}
+      if: ${{(needs.job1.outputs.output2 =='FAILURE') && (steps.step2.outputs.Fail2 == 'Match')}}
       run: |
-        echo "send mail"
+        echo "send mail There might be problem with WAS servers. case9"
        
           
   
