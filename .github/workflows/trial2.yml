@@ -151,7 +151,7 @@ jobs:
         echo "send mail case3"
           
     - name: mail case4 GET MINUTE HERE
-      if: ${{(steps.step1.outputs.Hour == '08') && ((steps.step2.outputs.Minute >= '00')&& (steps.step2.outputs.Minute <= '59'))&& ((needs.job1.outputs.output2 =='SUCCESS') ||
+      if: ${{(steps.step1.outputs.Hour == '07') && ((steps.step2.outputs.Minute >= '00')&& (steps.step2.outputs.Minute <= '09'))&& ((needs.job1.outputs.output2 =='SUCCESS') ||
            (needs.job1.outputs.output2 =='FIXED') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
            (steps.step3.outputs.Fail2 == 'has exceeded threshold limit for messages. Please take action!')}}
       run: |
