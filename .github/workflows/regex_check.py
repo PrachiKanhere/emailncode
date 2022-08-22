@@ -23,19 +23,19 @@ elif string2 in readfile:
 	print(build_Result)
 elif string3 in readfile:
 	build_Result = 'UNSTABLE'
-        print(build_Result)
+	print(build_Result)
 elif string4 in readfile:
 	build_Result = 'FAILURE'
-        print(build_Result)
+	print(build_Result)
 elif string5 in readfile:
 	build_Result = 'UNSTABLE'
-        print(build_Result)
+	print(build_Result)
 elif string6 in readfile:
 	build_Result = 'UNSTABLE'
-        print(build_Result)
+	print(build_Result)
 elif string7 in readfile:
 	build_Result = 'UNSTABLE'
-        print(build_Result)
+	print(build_Result)
 else:
 	print('SUCCESS')
 
