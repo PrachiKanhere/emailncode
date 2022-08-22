@@ -9,7 +9,7 @@ string6 = 'A timeout occurred while remotely browsing destination'
 string7 = 'An exception was received during the call to the method createBrowserSession'
 
 # opening a text file
-file1 = open('C:\\Users\\003EKW744\Desktop\\Script\\abc.txt', 'r')
+file1 = open('abc1.txt', 'r')
 
 # read file content
 readfile = file1.read()
