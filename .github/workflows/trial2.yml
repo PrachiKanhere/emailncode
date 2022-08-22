@@ -4,7 +4,7 @@ on: push
 jobs:
   job1:
     runs-on: windows-latest
-    # Map a step output to a job output
+    # Map a step output to a job output 123
     outputs:
       output1: ${{ steps.step1.outputs.test}}
       output2: ${{ steps.step2.outputs.build_Result}}
