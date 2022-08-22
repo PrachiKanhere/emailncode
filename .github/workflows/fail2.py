@@ -1,5 +1,3 @@
-import re
-
 
 text_file = open("abc1.txt", "r")
 readfile = text_file.read()
