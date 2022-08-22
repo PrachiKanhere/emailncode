@@ -151,7 +151,7 @@ jobs:
         echo "send mail case3"
           
     - name: mail case4 GET MINUTE HERE
-      if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
+      if: ${{(steps.step1.outputs.Hour == '07') && (steps.step2.outputs.Minute >= '00'&& steps.step2.outputs.Minute <= '09') && ((needs.job1.outputs.output2 =='SUCCESS') ||
            (needs.job1.outputs.output2 =='FIXED') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
            (steps.step3.outputs.Fail2 == 'Match')}}
       run: |
