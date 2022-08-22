@@ -1,5 +1,5 @@
 
-on: push
+on: pull_request
 
 jobs:
   job1:
@@ -123,18 +123,68 @@ jobs:
       run: |
         echo "${{steps.step2.outputs.Fail2}}"
         
-    - name: mail case
+    - name: mail case1
+      if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
+           (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
+           (steps.step2.outputs.Fail2 == 'Match')}}
+      run: |
+        echo "send mail"
+        
+    - name: mail case2
       if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
            (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
            (steps.step2.outputs.Fail2 == 'Match')}}
       run: |
         echo "send mail"
       
+    - name: mail case3
+      if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
+           (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
+           (steps.step2.outputs.Fail2 == 'Match')}}
+      run: |
+        echo "send mail"
           
-          
+    - name: mail case4
+      if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
+           (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
+           (steps.step2.outputs.Fail2 == 'Match')}}
+      run: |
+        echo "send mail"
 
-
+    - name: mail case5
+      if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
+           (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
+           (steps.step2.outputs.Fail2 == 'Match')}}
+      run: |
+        echo "send mail"
        
+    - name: mail case6
+      if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
+           (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
+           (steps.step2.outputs.Fail2 == 'Match')}}
+      run: |
+        echo "send mail"
+        
+    - name: mail case7
+      if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
+           (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
+           (steps.step2.outputs.Fail2 == 'Match')}}
+      run: |
+        echo "send mail"
+    
+    - name: mail case8
+      if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
+           (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
+           (steps.step2.outputs.Fail2 == 'Match')}}
+      run: |
+        echo "send mail"
+        
+    - name: mail case9
+      if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
+           (needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
+           (steps.step2.outputs.Fail2 == 'Match')}}
+      run: |
+        echo "send mail"
        
           
   
