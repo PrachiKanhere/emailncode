@@ -141,6 +141,7 @@ jobs:
         server_port: 465
         subject: Github Actions job result
         to: nileshkr1112@gmail.com,kanhereprachi9@gmail.com
+        from: prachi_kanhere
         body: Build job of completed successfully!
         html_body: <h2><b>IBM Queue depth MOnitoring GITHUB_RUN_NUMBER</b></h2>
         #attachments:
