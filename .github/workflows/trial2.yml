@@ -112,16 +112,26 @@ jobs:
     - name: Print op
       run: |
         echo "${{steps.step1.outputs.Hour}}"
+
+    - name: get minute
+      run: |
+        $minute = python .github/workflows/minute.py
+        echo "::set-output name=Minute::$output"
+      id: step2
+          
+    - name: Print op
+      run: |
+        echo "${{steps.step2.outputs.Minute}}"
           
     - name: it has exceeded threshold limit for msg plz take action send mail
       run: |
         $output = python .github/workflows/fail2.py
         echo "::set-output name=Fail2::$output"
-      id: step2
+      id: step3
    
     - name: Print op
       run: |
-        echo "${{steps.step2.outputs.Fail2}}"
+        echo "${{steps.step3.outputs.Fail2}}"
         
     - name: mail case1
       if: ${{needs.job1.outputs.output2 =='SUCCESS'}}
@@ -136,43 +146,43 @@ jobs:
     - name: mail case3
       if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
            (needs.job1.outputs.output2 =='FIXED') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-           (steps.step2.outputs.Fail2 == 'Match')}}
+           (steps.step3.outputs.Fail2 == 'Match')}}
       run: |
         echo "send mail case3"
           
     - name: mail case4 GET MINUTE HERE
       if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
            (needs.job1.outputs.output2 =='FIXED') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-           (steps.step2.outputs.Fail2 == 'Match')}}
+           (steps.step3.outputs.Fail2 == 'Match')}}
       run: |
         echo "send mail case4"
 
     - name: mail case5
-      if: ${{(needs.job1.outputs.output2 =='FAILURE') && (steps.step2.outputs.Fail2 == 'Match')}}
+      if: ${{(needs.job1.outputs.output2 =='FAILURE') && (steps.step3.outputs.Fail2 == 'Match')}}
       run: |
         echo "send mail WAS case5"
        
     - name: mail case6
       if: ${{(needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-           (steps.step2.outputs.Fail2 == 'Match')}}
+           (steps.step3.outputs.Fail2 == 'Match')}}
       run: |
         echo "send mail retrial case6"
         
     - name: mail case7
       if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
            (needs.job1.outputs.output2 =='FIXED') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-           (steps.step2.outputs.Fail2 == 'Match')}}
+           (steps.step3.outputs.Fail2 == 'Match')}}
       run: |
         echo "send mail Queues are not reducing case7"
         
     - name: mail case8
       if: ${{(needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-           (steps.step2.outputs.Fail2 == 'Match')}}
+           (steps.step3.outputs.Fail2 == 'Match')}}
       run: |
         echo "send mail Following Buses might be down case8"
         
     - name: mail case9
-      if: ${{(needs.job1.outputs.output2 =='FAILURE') && (steps.step2.outputs.Fail2 == 'Match')}}
+      if: ${{(needs.job1.outputs.output2 =='FAILURE') && (steps.step3.outputs.Fail2 == 'Match')}}
       run: |
         echo "send mail There might be problem with WAS servers. case9"
        
