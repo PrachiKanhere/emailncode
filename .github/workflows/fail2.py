@@ -2,26 +2,26 @@ import re
 
 
 text_file = open("abc1.txt", "r")
-str = text_file.read()
+readfile = text_file.read()
 
-str1 = "has exceeded threshold limit for messages. Please take action!"
-str2 = "There might be problem with WAS servers"
-str3 = "Issue Has Occurred for Allowed Retrial Times"
-str4 = "Following Queues are not reducing"
-str5 = "Following Buses might be down"
+string1 = "has exceeded threshold limit for messages. Please take action!"
+string2 = "There might be problem with WAS servers"
+string3 = "Issue Has Occurred for Allowed Retrial Times"
+string4 = "Following Queues are not reducing"
+string5 = "Following Buses might be down"
 
 
-if re.search(str1,str):
-             print(str1)
-elif re.search(str2,str):
-               print(str2)
-elif re.search(str3,str):
-               print(str3)
-elif re.search(str4,str):
-               print(str4)
-elif re.search(str5,str):
-               print(str5)
+if string1 in readfile:
+  print(string1)
+elif string2 in readfile:
+  print(string2)
+elif string3 in readfile:
+  print(string3)
+elif string4 in readfile:
+  print(string4)
+elif string5 in readfile:
+  print(string5)
 else:
-               print('No Match')
+  print('No Match')
           
 text_file.close()
