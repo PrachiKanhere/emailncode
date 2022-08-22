@@ -28,6 +28,10 @@ jobs:
           $build_result = python .github/workflows/regex_check.py
           echo "::set-output name=test::$build_result"
           
+      - name: Print op
+        run: |
+          echo "${{steps.step2.outputs.build_result}}"
+          
      
   Groovy-Script:
     runs-on: windows-latest
