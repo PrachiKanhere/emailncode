@@ -1,4 +1,4 @@
-build_Result = "FAILURE"
+#build_Result = "FAILURE"
 
 string1 = 'The Excel sheet was not created'
 string2 = 'The Excel sheet is empty!'
@@ -16,20 +16,26 @@ readfile = file1.read()
 
 # checking condition for string found or not
 if string1 in readfile:
+	build_Result = 'FAILURE'
 	print(build_Result)
 elif string2 in readfile:
-    print(build_Result)
+	build_Result = 'FAILURE'
+	print(build_Result)
 elif string3 in readfile:
-    print(build_Result)
+	build_Result = 'UNSTABLE'
+        print(build_Result)
 elif string4 in readfile:
-    print(build_Result)
+	build_Result = 'FAILURE'
+        print(build_Result)
 elif string5 in readfile:
-    print(build_Result)
-elif string6 in readfile: 
-    print(build_Result)
+	build_Result = 'UNSTABLE'
+        print(build_Result)
+elif string6 in readfile:
+	build_Result = 'UNSTABLE'
+        print(build_Result)
 elif string7 in readfile:
-    print(build_Result)
-    
+	build_Result = 'UNSTABLE'
+        print(build_Result)
 else:
 	print('SUCCESS')
 
