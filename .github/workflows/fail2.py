@@ -21,5 +21,7 @@ elif re.search(r'str4,str):
                print(str4)
 elif re.search(r'str5,str):
                print(str5)
+else:
+               print('No Match')
           
 text_file.close()
