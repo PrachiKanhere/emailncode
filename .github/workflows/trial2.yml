@@ -163,7 +163,7 @@ jobs:
         echo "send mail WAS case5"
        
     - name: mail case6
-      if: ${{(needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
+      if: ${{((needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
            (steps.step3.outputs.Fail2 == 'Issue Has Occurred for Allowed Retrial Times')}}
       run: |
         echo "send mail retrial case6"
@@ -176,7 +176,7 @@ jobs:
         echo "send mail Queues are not reducing case7"
         
     - name: mail case8
-      if: ${{(needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
+      if: ${{((needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
            (steps.step3.outputs.Fail2 == 'Following Buses might be down')}}
       run: |
         echo "send mail Following Buses might be down case8"
