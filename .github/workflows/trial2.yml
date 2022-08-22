@@ -146,43 +146,43 @@ jobs:
     - name: mail case3
       if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
            (needs.job1.outputs.output2 =='FIXED') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-           (steps.step3.outputs.Fail2 == 'Match')}}
+           (steps.step3.outputs.Fail2 == 'has exceeded threshold limit for messages. Please take action!')}}
       run: |
         echo "send mail case3"
           
     - name: mail case4 GET MINUTE HERE
       if: ${{(steps.step1.outputs.Hour == '07') && (steps.step2.outputs.Minute >= '00'&& steps.step2.outputs.Minute <= '09') && ((needs.job1.outputs.output2 =='SUCCESS') ||
            (needs.job1.outputs.output2 =='FIXED') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-           (steps.step3.outputs.Fail2 == 'Match')}}
+           (steps.step3.outputs.Fail2 == 'has exceeded threshold limit for messages. Please take action!')}}
       run: |
         echo "send mail case4"
 
     - name: mail case5
-      if: ${{(needs.job1.outputs.output2 =='FAILURE') && (steps.step3.outputs.Fail2 == 'Match')}}
+      if: ${{(needs.job1.outputs.output2 =='FAILURE') && (steps.step3.outputs.Fail2 == 'There might be problem with WAS servers')}}
       run: |
         echo "send mail WAS case5"
        
     - name: mail case6
       if: ${{(needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-           (steps.step3.outputs.Fail2 == 'Match')}}
+           (steps.step3.outputs.Fail2 == 'Issue Has Occurred for Allowed Retrial Times')}}
       run: |
         echo "send mail retrial case6"
         
     - name: mail case7
       if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
            (needs.job1.outputs.output2 =='FIXED') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-           (steps.step3.outputs.Fail2 == 'Match')}}
+           (steps.step3.outputs.Fail2 == 'Following Queues are not reducing')}}
       run: |
         echo "send mail Queues are not reducing case7"
         
     - name: mail case8
       if: ${{(needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-           (steps.step3.outputs.Fail2 == 'Match')}}
+           (steps.step3.outputs.Fail2 == 'Following Buses might be down')}}
       run: |
         echo "send mail Following Buses might be down case8"
         
     - name: mail case9
-      if: ${{(needs.job1.outputs.output2 =='FAILURE') && (steps.step3.outputs.Fail2 == 'Match')}}
+      if: ${{(needs.job1.outputs.output2 =='FAILURE') && (steps.step3.outputs.Fail2 == 'There might be problem with WAS servers')}}
       run: |
         echo "send mail There might be problem with WAS servers. case9"
        
