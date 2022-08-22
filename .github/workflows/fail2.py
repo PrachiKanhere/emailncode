@@ -11,15 +11,15 @@ str4 = "Following Queues are not reducing"
 str5 = "Following Buses might be down"
 
 
-if re.search(r'str1,str):
+if re.search(str1,str):
              print(str1)
-elif re.search(r'str2,str):
+elif re.search(str2,str):
                print(str2)
-elif re.search(r'str3,str):
+elif re.search(str3,str):
                print(str3)
-elif re.search(r'str4,str):
+elif re.search(str4,str):
                print(str4)
-elif re.search(r'str5,str):
+elif re.search(str5,str):
                print(str5)
 else:
                print('No Match')
