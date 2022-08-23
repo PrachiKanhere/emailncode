@@ -142,11 +142,19 @@ jobs:
         username: ${{secrets.MAIL_USERNAME}}
         # Optional (recommended) mail server password:monitoring@123
         password: ${{secrets.MAIL_PASSWORD}}
-        subject: Github Actions job result
-        to: kanhereprachi9@gmail.com
-        from: prachi_kanhere
-        body: Build job of completed successfully!
-        html_body: <h2><b>IBM Queue depth MOnitoring GITHUB_RUN_NUMBER</b></h2>
+        subject: Email from Queue Depth Monitoring System (Env:wamrpg1.aepsc.com)
+        to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
+        from: monitoringtest
+        #body: Build job of completed successfully!
+        html_body: |
+          <h2><b>IBM DW Queue Depth Monitoring System Job Run #: $GITHUB_RUN_NUMBER</b></h2>
+          <p>Hi team,</p>
+          <p>Details for Queue Depths for various Queues have been fetched. Please check the attachment for more details or go to Jenkins Job console to see the build stats.</p>
+          <p>
+          <b>Thanks and Regards</b>,<br />
+          IBM DW Team <br />
+          <br /> 
+          <p><i>This is an auto generated mail. Please do not reply</i></p>
         #attachments:
         
     - name: mail case2
