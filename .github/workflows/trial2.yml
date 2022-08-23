@@ -1,6 +1,9 @@
 
 on: push
 
+env: 
+  Build_Number: ${{ github.run_number }}
+
 jobs:
   job1:
     runs-on: windows-latest
@@ -154,7 +157,7 @@ jobs:
         from: monitoringtest
         #body: Build job of completed successfully!
         html_body: |
-          <h2><b>IBM DW Queue Depth Monitoring System Job Run #: $GITHUB_RUN_NUMBER</b></h2>
+          <h2><b>IBM DW Queue Depth Monitoring System Job Run #: ${{env.Build_Number}}</b></h2>
           <p>Hi team,</p>
           <p>Details for Queue Depths for various Queues have been fetched. Please check the attachment for more details or go to Jenkins Job console to see the build stats.</p>
           <p>
@@ -178,7 +181,7 @@ jobs:
         from: monitoringtest
         #body: # Both Html and body 
         html_body: |
-          <h2><b>IBM DW Queue Depth Monitoring System Job Run #: $GITHUB_RUN_NUMBER : Build Failure</b></h2>
+          <h2><b>IBM DW Queue Depth Monitoring System Job Run #: ${{env.Build_Number}} : Build Failure</b></h2>
 
           <p>Hi Team,</p>
           <p>Jenkins Job Run # $BUILD_NUMBER has failed. Please check attached logs for more details or go to the Jenkins console.</p>
@@ -205,7 +208,7 @@ jobs:
         from: monitoringtest
         #body: #plain
         html_body: |  
-          <h2><b>IBM DW Queue Depth Monitoring System Job Run #:$BUILD_NUMBER</b></h2>
+          <h2><b>IBM DW Queue Depth Monitoring System Job Run #:${{env.Build_Number}}</b></h2>
 
           <p>Hi Team,</p>
           <p>One or more queues have crossed the pre-defined threshold message capacity limit. Please find the concerned queue(s) highlighted in the attachment. Please take necessary action!</p>
@@ -233,7 +236,7 @@ jobs:
         from: monitoringtest
         #body: #plain
         html_body: |
-          <h2><b>IBM DW Queue Depth Monitoring System Job Run #: $GITHUB_RUN_NUMBER</b></h2>
+          <h2><b>IBM DW Queue Depth Monitoring System Job Run #: ${{env.Build_Number}}</b></h2>
           <p>Hi team,</p>
           <p>Details for Queue Depths for various Queues have been fetched. Please check the attachment for more details or go to Jenkins Job console to see the build stats.</p>
           <p>
@@ -271,7 +274,7 @@ jobs:
         username: ${{secrets.MAIL_USERNAME}}
         # Optional (recommended) mail server password:monitoring@123
         password: ${{secrets.MAIL_PASSWORD}}
-        subject:  ALERT from IBM Queue Depth Monitor System- subject
+        subject:  ALERT from IBM Queue Depth Monitor System
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
         from: monitoringtest
         body:  |
@@ -296,7 +299,7 @@ jobs:
         from: monitoringtest
         #body: # both plain and html 
         html_body:  
-          <h2><b>IBM DW Queue Depth Monitoring System Job Run#:$BUILD_NUMBER</b></h2>
+          <h2><b>IBM DW Queue Depth Monitoring System Job Run#:${{env.Build_Number}}</b></h2>
 
           <p>Hi Team,</p>
           <p>Queues have been detected whose depths <b><i>not reduced</i></b> compared to last verification time. Please check the spreadsheet attached with the mail that contains the name of the queues <i>(Only those that are not reducing)</i> and comparison between previous Queue Depths and current Queue Depths. Please monitor and take action if necessary!</p>
@@ -326,7 +329,7 @@ jobs:
         from: monitoringtest
         #body: #plain
         html_body:  
-          <h2><b>IBM DW Queue Depth Monitoring System Job Run#:$BUILD_NUMBER</b></h2>
+          <h2><b>IBM DW Queue Depth Monitoring System Job Run#:${{env.Build_Number}}</b></h2>
           <p>Hi Team,</p>
           <p>WebSphere Application Servers are down. NOI team has been duly notified through separate email. Please take necessary steps to resolute!</p>
           <p>
@@ -354,7 +357,7 @@ jobs:
         from: monitoringtest
         #body: # both plain and html 
         html_body: 
-          <h2><b>IBM DW Queue Depth Monitoring System Job Run#:$BUILD_NUMBER</b></h2>
+          <h2><b>IBM DW Queue Depth Monitoring System Job Run#:${{env.Build_Number}}</b></h2>
           <p>Hi Team,</p>
           <p>One or more Message Engines under the bus ${{needs.Groovy-Script.outputs.output3}} or one or more Clusters(MAXMIF/MAXUI/MAXCRN) are down. Please Monitor and take necessary action!</p>
           <p>
