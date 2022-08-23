@@ -1,5 +1,5 @@
 
-on: push
+on: pull_request
 
 jobs:
   job1:
@@ -165,6 +165,7 @@ jobs:
         server_port: 465
         subject:  Email from Queue Depth Monitoring System (Env:wamrpgp1.aepsc.com):BUILD FAILURE
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
+        from: monitoringtest
         #body: # Both Html and body 
         html_body: |
           <h2><b>IBM DW Queue Depth Monitoring System Job Run #: $GITHUB_RUN_NUMBER : Build Failure</b></h2>
@@ -188,6 +189,7 @@ jobs:
         server_port: 465
         subject: ACTION ALERT! Queue Depth Monitoring System :One or more Queues have reached the given threshold limit! (Env:wamrpgp1.aepsc.com)
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
+        from: monitoringtest
         #body: #plain
         html_body: |  
           <h2><b>IBM DW Queue Depth Monitoring System Job Run #:$BUILD_NUMBER</b></h2>
@@ -212,6 +214,7 @@ jobs:
         server_port: 465
         subject:  $PROJECT_DEFAULT_SUBJECT
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
+        from: monitoringtest
         #body: #plain
         html_body: $PROJECT_DEFAULT_CONTENT 
         #attachments: queueDepths.xls
@@ -224,6 +227,7 @@ jobs:
         server_port: 465
         subject:  Alert from IBM Queue Depth Monitor System
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
+        from: monitoringtest
         body: |
           EMAIL_2_BMC_EVENT;$TIMESTAMP;;2;wamrpgp1;WebSphere Application Server;GDC_WAS_Down_$DateForAlarmId;WebSphere Servers(JVMs)Down;WebSphere Servers(JVMs)Down;;;OPEN;;maximo_integ_support@aep.com,hkanumuri@aep.com,nbhargava@aep.com,wam_env_mgt_team@aep.com;6148837430;NO;1RP;YES;Complex - MaximoWAM ENV;ACTION ALERT Email from IBM Queue Depth Monitoring Solution;WAS Servers are Down Please take necessary action or contact at 6148837430;
 
@@ -238,6 +242,7 @@ jobs:
         server_port: 465
         subject:  ALERT from IBM Queue Depth Monitor System- subject
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
+        from: monitoringtest
         body:  |
           EMAIL_2_BMC_EVENT;$TIMESTAMP;;3;wamrpgp1;WebSphere Application Server;GDC_MessageEngine_Down_$DateForAlarmId;WebSphere Message Engine/Clusters Down;WebSphere Message Engine/Clusters Down;;;OPEN;;maximo_integ_support@aep.com,hkanumuri@aep.com,nbhargava@aep.com,wam_env_mgt_team@aep.com;6148837430;NO;1RP;YES;Complex - MaximoWAM ENV;ACTION ALERT Email from IBM Queue Depth Monitoring Solution;One or More Message Engines Under Service Bus or one or more Clusters are down. Please take action or contact at 6148837430;
 
@@ -254,6 +259,7 @@ jobs:
         server_port: 465
         subject: ACTION ALERT! Email from Queue Depth Monitoring System (Env:wamrpgp1.aepsc.com)
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
+        from: monitoringtest
         #body: # both plain and html 
         html_body:  
           <h2><b>IBM DW Queue Depth Monitoring System Job Run#:$BUILD_NUMBER</b></h2>
@@ -280,6 +286,7 @@ jobs:
         server_port: 465
         subject: ACTION ALERT! Servers Down :Email from Queue Depth Monitoring System (Env:wamrpgp1.aepsc.com)
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
+        from: monitoringtest
         #body: #plain
         html_body:  
           <h2><b>IBM DW Queue Depth Monitoring System Job Run#:$BUILD_NUMBER</b></h2>
@@ -304,6 +311,7 @@ jobs:
         server_port: 465
         subject: ACTION ALERT! Email from Queue Depth Monitoring System (Env:wamrpgp1.aepsc.com)
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
+        from: monitoringtest
         #body: # both plain and html 
         html_body: 
           <h2><b>IBM DW Queue Depth Monitoring System Job Run#:$BUILD_NUMBER</b></h2>
