@@ -19,7 +19,8 @@ jobs:
           #$abc= "has exceeded threshold limit for messages. Please take action!"
           #$abc = "The Excel sheet was not created"
           #$abc = "There might be problem with WAS servers"
-          $abc = "Issue Has Occurred for Allowed Retrial Times"
+          #$abc = "Issue Has Occurred for Allowed Retrial Times"
+          $abc = "Following Queues are not reducing"
           echo "::set-output name=test::$abc"
           
       - name : take file
