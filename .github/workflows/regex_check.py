@@ -37,7 +37,7 @@ elif string7 in readfile:
 	build_Result = 'UNSTABLE'
 	print(build_Result)
 else:
-	print('SUCCESS')
+	print('FAILURE')
 
 # closing a file
 file1.close()
