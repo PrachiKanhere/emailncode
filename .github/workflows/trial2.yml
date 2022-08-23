@@ -168,6 +168,9 @@ jobs:
       with:
         server_address: smtp.gmail.com
         server_port: 465
+        username: ${{secrets.MAIL_USERNAME}}
+        # Optional (recommended) mail server password:monitoring@123
+        password: ${{secrets.MAIL_PASSWORD}}
         subject:  Email from Queue Depth Monitoring System (Env:wamrpgp1.aepsc.com):BUILD FAILURE
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
         from: monitoringtest
@@ -192,6 +195,9 @@ jobs:
       with:
         server_address: smtp.gmail.com
         server_port: 465
+        username: ${{secrets.MAIL_USERNAME}}
+        # Optional (recommended) mail server password:monitoring@123
+        password: ${{secrets.MAIL_PASSWORD}}
         subject: ACTION ALERT! Queue Depth Monitoring System :One or more Queues have reached the given threshold limit! (Env:wamrpgp1.aepsc.com)
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
         from: monitoringtest
@@ -217,6 +223,9 @@ jobs:
       with:
         server_address: smtp.gmail.com
         server_port: 465
+        username: ${{secrets.MAIL_USERNAME}}
+        # Optional (recommended) mail server password:monitoring@123
+        password: ${{secrets.MAIL_PASSWORD}}
         subject:  $PROJECT_DEFAULT_SUBJECT
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
         from: monitoringtest
@@ -230,6 +239,9 @@ jobs:
       with:
         server_address: smtp.gmail.com
         server_port: 465
+        username: ${{secrets.MAIL_USERNAME}}
+        # Optional (recommended) mail server password:monitoring@123
+        password: ${{secrets.MAIL_PASSWORD}}
         subject:  Alert from IBM Queue Depth Monitor System
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
         from: monitoringtest
@@ -245,6 +257,9 @@ jobs:
       with:
         server_address: smtp.gmail.com
         server_port: 465
+        username: ${{secrets.MAIL_USERNAME}}
+        # Optional (recommended) mail server password:monitoring@123
+        password: ${{secrets.MAIL_PASSWORD}}
         subject:  ALERT from IBM Queue Depth Monitor System- subject
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
         from: monitoringtest
@@ -262,6 +277,9 @@ jobs:
       with:
         server_address: smtp.gmail.com
         server_port: 465
+        username: ${{secrets.MAIL_USERNAME}}
+        # Optional (recommended) mail server password:monitoring@123
+        password: ${{secrets.MAIL_PASSWORD}}
         subject: ACTION ALERT! Email from Queue Depth Monitoring System (Env:wamrpgp1.aepsc.com)
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
         from: monitoringtest
@@ -289,6 +307,9 @@ jobs:
       with:
         server_address: smtp.gmail.com
         server_port: 465
+        username: ${{secrets.MAIL_USERNAME}}
+        # Optional (recommended) mail server password:monitoring@123
+        password: ${{secrets.MAIL_PASSWORD}}
         subject: ACTION ALERT! Servers Down :Email from Queue Depth Monitoring System (Env:wamrpgp1.aepsc.com)
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
         from: monitoringtest
@@ -314,6 +335,9 @@ jobs:
       with:
         server_address: smtp.gmail.com
         server_port: 465
+        username: ${{secrets.MAIL_USERNAME}}
+        # Optional (recommended) mail server password:monitoring@123
+        password: ${{secrets.MAIL_PASSWORD}}
         subject: ACTION ALERT! Email from Queue Depth Monitoring System (Env:wamrpgp1.aepsc.com)
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
         from: monitoringtest
