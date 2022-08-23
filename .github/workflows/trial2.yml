@@ -218,7 +218,7 @@ jobs:
         #attachments: queueDepths.xls
         
     - name: mail case4 GET MINUTE HERE
-      if: ${{(steps.step1.outputs.Hour == '07') && ((steps.step2.outputs.Minute >= '00')&& (steps.step2.outputs.Minute <= '09'))&& ((needs.job1.outputs.output2 =='SUCCESS') ||
+      if: ${{(steps.step1.outputs.Hour == '07') && ((steps.step2.outputs.Minute >= '00')&& (steps.step2.outputs.Minute <= '20'))&& ((needs.job1.outputs.output2 =='SUCCESS') ||
            (needs.job1.outputs.output2 =='FIXED') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
            (steps.step3.outputs.Fail2 == 'has exceeded threshold limit for messages. Please take action!')}}
       uses: dawidd6/action-send-mail@v3
