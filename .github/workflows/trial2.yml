@@ -1,5 +1,5 @@
 
-on: pull_request
+on: push
 
 jobs:
   job1:
@@ -41,6 +41,10 @@ jobs:
      
   Groovy-Script:
     runs-on: windows-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.TIMESTAMP}}
+      output2: ${{ steps.step2.outputs.formatteddate}}
+      output3: ${{ steps.step3.outputs.DOWN_BUS}}
     needs: job1
     steps:
       - name: checkout
@@ -230,7 +234,7 @@ jobs:
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
         from: monitoringtest
         body: |
-          EMAIL_2_BMC_EVENT;$TIMESTAMP;;2;wamrpgp1;WebSphere Application Server;GDC_WAS_Down_$DateForAlarmId;WebSphere Servers(JVMs)Down;WebSphere Servers(JVMs)Down;;;OPEN;;maximo_integ_support@aep.com,hkanumuri@aep.com,nbhargava@aep.com,wam_env_mgt_team@aep.com;6148837430;NO;1RP;YES;Complex - MaximoWAM ENV;ACTION ALERT Email from IBM Queue Depth Monitoring Solution;WAS Servers are Down Please take necessary action or contact at 6148837430;
+          EMAIL_2_BMC_EVENT;${{needs.Groovy-Script.outputs.output1}};;2;wamrpgp1;WebSphere Application Server;GDC_WAS_Down_${{needs.Groovy-Script.outputs.output2}};WebSphere Servers(JVMs)Down;WebSphere Servers(JVMs)Down;;;OPEN;;maximo_integ_support@aep.com,hkanumuri@aep.com,nbhargava@aep.com,wam_env_mgt_team@aep.com;6148837430;NO;1RP;YES;Complex - MaximoWAM ENV;ACTION ALERT Email from IBM Queue Depth Monitoring Solution;WAS Servers are Down Please take necessary action or contact at 6148837430;
 
         #attachments: No Attachment 
        
@@ -245,7 +249,7 @@ jobs:
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
         from: monitoringtest
         body:  |
-          EMAIL_2_BMC_EVENT;$TIMESTAMP;;3;wamrpgp1;WebSphere Application Server;GDC_MessageEngine_Down_$DateForAlarmId;WebSphere Message Engine/Clusters Down;WebSphere Message Engine/Clusters Down;;;OPEN;;maximo_integ_support@aep.com,hkanumuri@aep.com,nbhargava@aep.com,wam_env_mgt_team@aep.com;6148837430;NO;1RP;YES;Complex - MaximoWAM ENV;ACTION ALERT Email from IBM Queue Depth Monitoring Solution;One or More Message Engines Under Service Bus or one or more Clusters are down. Please take action or contact at 6148837430;
+          EMAIL_2_BMC_EVENT;${{needs.Groovy-Script.outputs.output1}};;3;wamrpgp1;WebSphere Application Server;GDC_MessageEngine_Down_${{needs.Groovy-Script.outputs.output2}};WebSphere Message Engine/Clusters Down;WebSphere Message Engine/Clusters Down;;;OPEN;;maximo_integ_support@aep.com,hkanumuri@aep.com,nbhargava@aep.com,wam_env_mgt_team@aep.com;6148837430;NO;1RP;YES;Complex - MaximoWAM ENV;ACTION ALERT Email from IBM Queue Depth Monitoring Solution;One or More Message Engines Under Service Bus or one or more Clusters are down. Please take action or contact at 6148837430;
 
 
         #attachments: No Attachment
@@ -317,7 +321,7 @@ jobs:
         html_body: 
           <h2><b>IBM DW Queue Depth Monitoring System Job Run#:$BUILD_NUMBER</b></h2>
           <p>Hi Team,</p>
-          <p>One or more Message Engines under the bus $DOWN_BUSES or one or more Clusters(MAXMIF/MAXUI/MAXCRN) are down. Please Monitor and take necessary action!</p>
+          <p>One or more Message Engines under the bus ${{needs.Groovy-Script.outputs.output3}} or one or more Clusters(MAXMIF/MAXUI/MAXCRN) are down. Please Monitor and take necessary action!</p>
           <p>
           <b>Thanks and Regards</b>,<br />
           IBM DW Team <br />
