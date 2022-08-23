@@ -1,5 +1,5 @@
 
-on: push
+on: pull_request
 
 jobs:
   job1:
@@ -147,7 +147,7 @@ jobs:
         from: monitoringtest
         #body: Build job of completed successfully!
         html_body: |
-          <h2><b>IBM DW Queue Depth Monitoring System Job Run #: $GITHUB_RUN_NUMBER</b></h2>
+          <h2><b>IBM DW Queue Depth Monitoring System Job Run #: ${{GITHUB_RUN_NUMBER}}</b></h2>
           <p>Hi team,</p>
           <p>Details for Queue Depths for various Queues have been fetched. Please check the attachment for more details or go to Jenkins Job console to see the build stats.</p>
           <p>
@@ -159,51 +159,164 @@ jobs:
         
     - name: mail case2
       if: ${{ needs.job1.outputs.output2 =='FAILURE'}}
-      run: |
-        echo "send mail failure case2"
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        subject:  Email from Queue Depth Monitoring System (Env:wamrpgp1.aepsc.com):BUILD FAILURE
+        to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
+        #body: # Both Html and body 
+        html_body: |
+          <h2><b>IBM DW Queue Depth Monitoring System Job Run #: ${{GITHUB_RUN_NUMBER}} : Build Failure</b></h2>
+
+          <p>Hi Team,</p>
+          <p>Jenkins Job Run # $BUILD_NUMBER has failed. Please check attached logs for more details or go to the Jenkins console.</p>
+          <p>
+          <b>Thanks and Regards</b>,<br />
+          IBM DW Team <br />
+          <p><i>This is an auto generated mail. Please do not reply</i></p>
+
+        #attachments: attach build logs 
       
     - name: mail case3
       if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
            (needs.job1.outputs.output2 =='FIXED') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
            (steps.step3.outputs.Fail2 == 'has exceeded threshold limit for messages. Please take action!')}}
-      run: |
-        echo "send mail case3"
-          
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        subject: ACTION ALERT! Queue Depth Monitoring System :One or more Queues have reached the given threshold limit! (Env:wamrpgp1.aepsc.com)
+        to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
+        #body: #plain
+        html_body: |  
+          <h2><b>IBM DW Queue Depth Monitoring System Job Run #:$BUILD_NUMBER</b></h2>
+
+          <p>Hi Team,</p>
+          <p>One or more queues have crossed the pre-defined threshold message capacity limit. Please find the concerned queue(s) highlighted in the attachment. Please take necessary action!</p>
+          <p>
+          <b>Thanks and Regards</b>,<br />
+          <b>IBM DW Team</b> <br />
+          <br /> 
+          <p><i>This is an auto generated mail. Please do not reply</i></p>
+
+        #attachments: queueDepths.xls
+        
     - name: mail case4 GET MINUTE HERE
       if: ${{(steps.step1.outputs.Hour == '07') && ((steps.step2.outputs.Minute >= '00')&& (steps.step2.outputs.Minute <= '09'))&& ((needs.job1.outputs.output2 =='SUCCESS') ||
            (needs.job1.outputs.output2 =='FIXED') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
            (steps.step3.outputs.Fail2 == 'has exceeded threshold limit for messages. Please take action!')}}
-      run: |
-        echo "send mail case4"
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        subject:  $PROJECT_DEFAULT_SUBJECT
+        to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
+        #body: #plain
+        html_body: $PROJECT_DEFAULT_CONTENT 
+        #attachments: queueDepths.xls
 
     - name: mail case5
       if: ${{(needs.job1.outputs.output2 =='FAILURE') && (steps.step3.outputs.Fail2 == 'There might be problem with WAS servers')}}
-      run: |
-        echo "send mail WAS case5"
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        subject:  Alert from IBM Queue Depth Monitor System
+        to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
+        body: |
+          EMAIL_2_BMC_EVENT;$TIMESTAMP;;2;wamrpgp1;WebSphere Application Server;GDC_WAS_Down_$DateForAlarmId;WebSphere Servers(JVMs)Down;WebSphere Servers(JVMs)Down;;;OPEN;;maximo_integ_support@aep.com,hkanumuri@aep.com,nbhargava@aep.com,wam_env_mgt_team@aep.com;6148837430;NO;1RP;YES;Complex - MaximoWAM ENV;ACTION ALERT Email from IBM Queue Depth Monitoring Solution;WAS Servers are Down Please take necessary action or contact at 6148837430;
+
+        #attachments: No Attachment 
        
     - name: mail case6
       if: ${{((needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
            (steps.step3.outputs.Fail2 == 'Issue Has Occurred for Allowed Retrial Times')}}
-      run: |
-        echo "send mail retrial case6"
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        subject:  ALERT from IBM Queue Depth Monitor System- subject
+        to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
+        body:  |
+          EMAIL_2_BMC_EVENT;$TIMESTAMP;;3;wamrpgp1;WebSphere Application Server;GDC_MessageEngine_Down_$DateForAlarmId;WebSphere Message Engine/Clusters Down;WebSphere Message Engine/Clusters Down;;;OPEN;;maximo_integ_support@aep.com,hkanumuri@aep.com,nbhargava@aep.com,wam_env_mgt_team@aep.com;6148837430;NO;1RP;YES;Complex - MaximoWAM ENV;ACTION ALERT Email from IBM Queue Depth Monitoring Solution;One or More Message Engines Under Service Bus or one or more Clusters are down. Please take action or contact at 6148837430;
+
+
+        #attachments: No Attachment
         
     - name: mail case7
       if: ${{(steps.step1.outputs.Hour < '21') && (steps.step1.outputs.Hour >= '01') && ((needs.job1.outputs.output2 =='SUCCESS') ||
            (needs.job1.outputs.output2 =='FIXED') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
            (steps.step3.outputs.Fail2 == 'Following Queues are not reducing')}}
-      run: |
-        echo "send mail Queues are not reducing case7"
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        subject: ACTION ALERT! Email from Queue Depth Monitoring System (Env:wamrpgp1.aepsc.com)
+        to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
+        #body: # both plain and html 
+        html_body:  
+          <h2><b>IBM DW Queue Depth Monitoring System Job Run#:$BUILD_NUMBER</b></h2>
+
+          <p>Hi Team,</p>
+          <p>Queues have been detected whose depths <b><i>not reduced</i></b> compared to last verification time. Please check the spreadsheet attached with the mail that contains the name of the queues <i>(Only those that are not reducing)</i> and comparison between previous Queue Depths and current Queue Depths. Please monitor and take action if necessary!</p>
+          <p>
+          <b>Thanks and Regards</b>,<br />
+          IBM DW Team <br />
+          <br /> 
+          <p><i>This is an auto generated mail. Please do not reply</i></p>
+
+        #attachments: queueDepthComparison.xls
+        
+        
         
     - name: mail case8
-      if: ${{((needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
-           (steps.step3.outputs.Fail2 == 'Following Buses might be down')}}
-      run: |
-        echo "send mail Following Buses might be down case8"
+      #if: ${{((needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
+       #    (steps.step3.outputs.Fail2 == 'Following Buses might be down')}}
+      if: ${{(needs.job1.outputs.output2 =='FAILURE') && (steps.step3.outputs.Fail2 == 'There might be problem with WAS servers')}}
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        subject: ACTION ALERT! Servers Down :Email from Queue Depth Monitoring System (Env:wamrpgp1.aepsc.com)
+        to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
+        #body: #plain
+        html_body:  
+          <h2><b>IBM DW Queue Depth Monitoring System Job Run#:$BUILD_NUMBER</b></h2>
+          <p>Hi Team,</p>
+          <p>WebSphere Application Servers are down. NOI team has been duly notified through separate email. Please take necessary steps to resolute!</p>
+          <p>
+          <b>Thanks and Regards</b>,<br />
+          IBM DW Team <br />
+          <br /> 
+          <p><i>This is an auto generated mail. Please do not reply</i></p>
+
+        #attachments:  Build logs
+        
         
     - name: mail case9
-      if: ${{(needs.job1.outputs.output2 =='FAILURE') && (steps.step3.outputs.Fail2 == 'There might be problem with WAS servers')}}
-      run: |
-        echo "send mail There might be problem with WAS servers. case9"
+      if: ${{((needs.job1.outputs.output2 =='FAILURE') || (needs.job1.outputs.output2 =='UNSTABLE')) &&
+           (steps.step3.outputs.Fail2 == 'Following Buses might be down')}}
+      #if: ${{(needs.job1.outputs.output2 =='FAILURE') && (steps.step3.outputs.Fail2 == 'There might be problem with WAS servers')}}
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        subject: ACTION ALERT! Email from Queue Depth Monitoring System (Env:wamrpgp1.aepsc.com)
+        to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
+        #body: # both plain and html 
+        html_body: 
+          <h2><b>IBM DW Queue Depth Monitoring System Job Run#:$BUILD_NUMBER</b></h2>
+          <p>Hi Team,</p>
+          <p>One or more Message Engines under the bus $DOWN_BUSES or one or more Clusters(MAXMIF/MAXUI/MAXCRN) are down. Please Monitor and take necessary action!</p>
+          <p>
+          <b>Thanks and Regards</b>,<br />
+          IBM DW Team <br />
+          <br /> 
+          <p><i>This is an auto generated mail. Please do not reply</i></p>
+
+
+        #attachments:  Build logs
        
           
   
