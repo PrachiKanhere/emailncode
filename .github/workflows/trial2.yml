@@ -147,7 +147,7 @@ jobs:
         from: monitoringtest
         #body: Build job of completed successfully!
         html_body: |
-          <h2><b>IBM DW Queue Depth Monitoring System Job Run #: ${{GITHUB_RUN_NUMBER}}</b></h2>
+          <h2><b>IBM DW Queue Depth Monitoring System Job Run #: $GITHUB_RUN_NUMBER</b></h2>
           <p>Hi team,</p>
           <p>Details for Queue Depths for various Queues have been fetched. Please check the attachment for more details or go to Jenkins Job console to see the build stats.</p>
           <p>
@@ -167,7 +167,7 @@ jobs:
         to: kanhereprachi9@gmail.com,nileshkr1112@gmail.com
         #body: # Both Html and body 
         html_body: |
-          <h2><b>IBM DW Queue Depth Monitoring System Job Run #: ${{GITHUB_RUN_NUMBER}} : Build Failure</b></h2>
+          <h2><b>IBM DW Queue Depth Monitoring System Job Run #: $GITHUB_RUN_NUMBER : Build Failure</b></h2>
 
           <p>Hi Team,</p>
           <p>Jenkins Job Run # $BUILD_NUMBER has failed. Please check attached logs for more details or go to the Jenkins console.</p>
