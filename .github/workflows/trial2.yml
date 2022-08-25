@@ -31,7 +31,9 @@ jobs:
           echo "${{steps.step1.outputs.test}}" > abc1.txt
          
       - name: setup Python
-        uses: actions/setup-python@v3    
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.7'
           
       - name: taking build result
         id: step2
@@ -61,7 +63,9 @@ jobs:
           echo "${{needs.job1.outputs.output1}}" > abc1.txt
            
       - name: setup Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.7'
         
       - name: install dependencies
         run : python -m pip install pytz
@@ -108,7 +112,9 @@ jobs:
         echo "${{needs.job1.outputs.output1}}" > abc1.txt
            
     - name: setup Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.7'
         
     - name: install dependencies
       run : python -m pip install pytz
