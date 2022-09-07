@@ -1,4 +1,4 @@
-
+name: trial2
 on: push
 
 env: 
