@@ -1,8 +1,8 @@
 
-on: pull_request
+on: push
 
 env: 
-  Build_Number: ${{ github.run_number }}
+  Build_Number: ${{ github.run_number }}  #abcd
 
 jobs:
   job1:
