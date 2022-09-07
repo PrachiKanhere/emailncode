@@ -1,0 +1,15 @@
+on:
+  workflow_run:
+    workflows: ["trail2"]
+    
+
+
+jobs:
+  job1:
+    runs-on: windows-latest
+    # Map a step output to a job output
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2.4.2  
+        run: cd
